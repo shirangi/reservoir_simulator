@@ -1,0 +1,4 @@
+module EnKFglobalvar
+
+
+Endmodule EnKFglobalvar

@@ -1,0 +1,218 @@
+
+-- *                                          *
+-- *         Reza's case, Reservoir Model          *
+-- *                                          *
+-- *------------------------------------------*
+DIMENS
+-- NX   NY   NZ
+   30   30    3 /
+
+SWOF
+0.1	0	1	0
+0.15	0.003	0.875	0
+0.2	0.012	0.757	0
+0.25	0.028	0.647	0
+0.3	0.049	0.545	0
+0.35	0.077	0.451	0
+0.4	0.11	0.365	0
+0.45	0.15	0.287	0
+0.5	0.196	0.217	0
+0.55	0.248	0.156	0
+0.6	0.306	0.104	0
+0.65	0.37	0.062	0
+0.7	0.441	0.03	0
+0.75	0.517	0.008	0
+0.8	0.6	0	0
+1	1	0	0
+/
+
+PVDO       1 TABLES   20 P NODES   20 R NODES    FIELD   12:49 24 Feb04
+1000	1.25	1.0
+2000	1.2	1.0
+3000	1.15	1.0
+4000	1.1	1.0
+5000	1.05	1.0
+6000    1.0     1.0
+/           
+
+DENSITY    
+ 56.93   62.428   0.0516
+/               
+
+PVTW               
+ 4400.37   1.00   1.0E-6   1.0   0.0   /
+
+ROCK
+         4408.205           0.00000001   /
+
+REGIONS  ===============================================================
+
+ENDBOX
+
+SOLUTION ===============================================================
+
+--    DATUM  DATUM   OWC    OWC    GOC    GOC    RSVD   RVVD   SOLN
+--    DEPTH  PRESS  DEPTH   PCOW  DEPTH   PCOG  TABLE  TABLE   METH
+EQUIL
+     7835.0  4000.0 7900.0 0.820  2726.38 0.000     1     1*      0  /
+
+
+SCHEDULE
+
+------------------- WELL SPECIFICATION DATA --------------------------
+--                                        RADIUS    SKIN
+WELSPECS
+'INJ-1'    8     8   3   3
+'INJ-2'    22    8   3   3
+'INJ-3'    7     23  3   3
+'INJ-4'    22    23  3   3
+'PRO-1'     3    3   1   1
+'PRO-2'    15    3   1   1
+'PRO-3'    28    3   1   1
+'PRO-4'     3   15   1   1
+'PRO-5'    15   15   1   1
+'PRO-6'    28   15   1   1
+'PRO-7'     3   28   1   1
+'PRO-8'    15   28   1   1
+'PRO-9'    28   28   1   1
+/
+
+
+NTSTEP
+3
+/
+
+TSTEP
+ 1.0 14  1785	2985 / 
+/
+
+
+
+
+RADIUS
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+0.5
+/
+
+MINBHP  / this is the minimum BHP which a constant rate well can have
+14.7
+/
+
+MAXBHP  / this is the minimum BHP which a constant rate injection well can have
+15000
+/
+
+MAXWOR / max_WOR at which the well would be shut in
+50
+/
+
+SOR / 
+0.2
+/
+
+time_step
+15.0
+/
+
+OMB  / deviation from 1, for Convergence when residual is .LT. 1.0d-1
+1d-4
+/
+
+MOMB / minimum value of Oil Material Balance when residual is .LT. MRHS
+2.0d-4
+/
+
+M_ITER  / Maximum number of Iterations
+10
+/
+
+MRHS / Maximum value of RHS for convergence criteria
+2.0d-1
+/
+
+SWI
+0.1
+/
+
+PRESSURE
+4000
+/
+
+USEIP / USe Pressure and SWi as Initial Pressure ans Sw for All Gridblocks?
+NOT  /  YES or NO
+/
+
+USEISW
+True
+/
+
+
+WellType   / it can be either 'inje', or 'prod'
+ 1    inje
+ 2    inje
+ 3    inje
+ 4    inje
+ 5    prod
+ 6    prod
+ 7    prod
+ 8    prod
+ 9    prod
+ 10   prod
+ 11   prod
+ 12   prod
+ 13   prod
+/ 
+
+*====================================================================== 
+*==                    Well Schedule                                 ==         
+*======================================================================
+*
+*Constraint Type: 1: Oil flow Rate(qo) or Water injection Rate (qw_inj)
+*                 2: Bottomhole Pressure (Pwf)
+*
+NSchedule           2
+*---------------------------------------------------------------------
+Well#  Cons-Type      Constraint          Start-Time       End-Time
+----------------------------------------------------------------------
+1	1	1100	0	300
+2	1	1100	0	300
+3	1	1100	0	300
+4	1	1100	0	300
+5	2	3800	0	300
+6	2	3800	0	300
+7	2	3800	0	300
+8	2	3800	0	300
+9	2	3800	0	300
+10	2	3800	0	300
+11	2	3800	0	300
+12	2	3800	0	300
+13	2	3800	0	300
+1	1	1000	300	3250
+2	1	1000	300	3250
+3	1	1000	300	3250
+4	1	1000	300	3250
+5	2	3500	300	3250
+6	2	3500	300	3250
+7	2	3500	300	3250
+8	2	3500	300	3250
+9	2	3500	300	3250
+10	2	3500	300	3250
+11	2	3500	300	3250
+12	2	3500	300	3250
+13	2	3500	300	3250
+*---------------------------------------------------------------
+
+END
+
+

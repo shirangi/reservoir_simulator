@@ -1,0 +1,56 @@
+----------------------------------------------------------------------------------------------------
+***** Measurement Noise in observed Data 
+*
+T_OBS 		30
+*
+VAR_P 		2
+*
+*
+SIGMA_WOR 	0.02
+*
+*
+SIGMA_QO 	0.01
+*
+*
+SIGMA_QW 	0.02
+*
+*
+** -----the minimum error in case of zero WOR, or small WOR
+*
+*
+MINERROR_WOR	1.6D-5
+*
+MINERROR_RAT	0.5
+*
+*
+----------------------------------------------------------------------------------------------------
+DATATIME 
+4000
+/
+-- Well data 
+-- from 1st entry are for:
+-- Press, q_oil, q_water, wor
+-- -1 :: Not being assimilated
+-- +1 :: being Assimilated
+-- Well No. , Press, q_oil, q_water , wor    (   begin and end  are indicated by DATATIME)
+N_DATA_INDEX
+1
+DATA_INDEX -- Take care about End Time and Begin Time, Begin < t <= End
+1	1	-1	-1	-1
+2	1	-1	-1	-1
+3	1	-1	-1	-1
+4	1	-1	-1	-1
+5	-1	1	1	-1
+6	-1	1	1	-1
+7	-1	1	1	-1
+8	-1	1	1	-1
+9	-1	1	1	-1
+10	-1	1	1	-1
+11	-1	1	1	-1
+12	-1	1	1	-1
+13	-1	1	1	-1
+--
+** the wells that we have the data (WOR or RATES) available , 1 == we have data, 0 == we dont have data
+----------------------------------------------------------------------------------------------------
+
+END
